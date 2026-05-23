@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# ML Models
+# car_price_model.pkl # Keep this if you want to share the trained model
+
+# Data
+# car_price_prediction.csv # Usually ignored if large, but small enough for GitHub typically
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
