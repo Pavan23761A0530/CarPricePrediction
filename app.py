@@ -445,16 +445,17 @@ def predict():
                                      drive_wheels=CACHE['drive_wheels'],
                                      error=str(e))
 
+# Initialize cache and model check at module level for production deployment
+load_cache()
+
+# Check if model exists, if not train it
+if not os.path.exists('car_price_model.pkl'):
+    print("🚀Model not found. Starting training...")
+    predictor = CarPricePredictor()
+    predictor.run_pipeline()
+else:
+    print("✅Found existing model 'car_price_model.pkl'.")
+
 if __name__ == '__main__':
-    load_cache()
-    
-    # Check if model exists, if not train it
-    if not os.path.exists('car_price_model.pkl'):
-        print("🚀Model not found. Starting training...")
-        predictor = CarPricePredictor()
-        predictor.run_pipeline()
-    else:
-        print("✅Found existing model 'car_price_model.pkl'.")
-    
     print("\n🌐 Starting Web Application...")
     app.run(debug=False, host='0.0.0.0', port=5000)
